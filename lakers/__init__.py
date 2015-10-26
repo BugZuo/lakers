@@ -1,6 +1,11 @@
 from flask import Flask
+import app_settings
 
-app = Flask(__name__)
+template_folder = 'templates'
+if hasattr(app_settings, 'TEMPLATE_FOLDER'):
+    template_folder = app_settings.TEMPLATE_FOLDER
+
+app = Flask(__name__, template_folder=template_folder)
 
 from lakers import urls
 

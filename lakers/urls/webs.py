@@ -5,6 +5,6 @@ from lakers.views import handsome
 
 URLS = (
     ('/', ['GET'], home.views.Home),
-    ('/login/', ['GET'], home.views.LoginView),
+    ('/login/', ['GET', 'POST'], home.views.LoginView),
     ('/handsome/', ['GET'], handsome.views.HandSomeView),
 )
