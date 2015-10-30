@@ -1,0 +1,1 @@
+from .manage import user_core_service
