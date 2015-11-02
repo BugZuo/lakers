@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- JinJa2 Template -->
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+    {% block title %}<title>诺曼底登录</title>{% endblock %}
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="/static/css/login/login.css" rel="stylesheet">
+	</head>
+	<body>
+    <!--login modal-->
+    <div class="login">
+      <div class="heading">
+        <h2>Sign in</h2>
+        <form action="/login/" method="post">
+
+          <div class="input-group input-group-lg">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <input name="username" type="text" class="form-control" placeholder="Username or email">
+              </div>
+
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+              <input name="password" type="password" class="form-control" placeholder="Password">
+            </div>
+
+            <button type="submit" class="float">Login</button>
+           </form>
+        </div>
+     </div>
+
+    <!-- Footer -->
+    {% extends "common/footer.html" %}
+
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="/static/js/bootstrap.min.js"></script>
+	</body>
+</html>

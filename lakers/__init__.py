@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from flask import Flask
+from flask import render_template
 from flask.ext.sqlalchemy import SQLAlchemy
 import app_settings
 
@@ -34,6 +35,6 @@ restful = RESTful(app)
 
 @app.errorhandler(404)
 def not_found(error):
-	return "404!"
+	return render_template("404.html")
 
 from lakers.views.los_angeles import views
