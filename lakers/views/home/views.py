@@ -15,12 +15,12 @@ from lakers.services.user import user_core_service
 
 class Home(MethodView):
     def get(self):
-        return render_template("home/index.jinja")
+        return render_template("home/index.html")
 
 
 class LoginView(MethodView):
     def get(self):
-        return render_template("login/login.jinja")
+        return render_template("login/login.html")
 
     def post(self):
 
@@ -38,7 +38,7 @@ class LoginView(MethodView):
         data = {
             'user': user,
         }
-        return render_template("handsome/handsome.jinja", **data)
+        return render_template("handsome/handsome.html", **data)
 
 class RegisterView(MethodView):
     def get(self):
