@@ -1,7 +1,7 @@
 # -*- coding=utf-8 -*-
 
-from lakers.views import home
-from lakers.views import handsome
+from lakers.views.webs import home
+from lakers.views.webs import handsome
 
 URLS = (
     ('/', ['GET'], home.views.Home),

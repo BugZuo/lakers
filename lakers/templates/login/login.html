@@ -7,11 +7,12 @@
     {% block title %}<title>诺曼底登录</title>{% endblock %}
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+		<link href="{{ static_prefix }}/static/css/bootstrap.min.css" rel="stylesheet">
 		<!--[if lt IE 9]>
-			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+{#			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>#}
+        <script src="{{ static_prefix }}/static/js/html5.js"></script>
 		<![endif]-->
-		<link href="/static/css/login/login.css" rel="stylesheet">
+		<link href="{{ static_prefix }}/static/css/login/login.css" rel="stylesheet">
 	</head>
 	<body>
     <!--login modal-->
@@ -30,16 +31,17 @@
               <input name="password" type="password" class="form-control" placeholder="Password">
             </div>
 
-            <button type="submit" class="float">Login</button>
+            <button type="submit" class="float btn-submit-login">Login</button>
            </form>
         </div>
      </div>
 
+	<!-- script references -->
+		<script src="{{ static_prefix }}/static/js/jquery.js"></script>
+		<script src="{{ static_prefix }}/static/js/bootstrap.min.js"></script>
+    <script src="{{ static_prefix }}/static/js/login/login.js"></script>
+
     <!-- Footer -->
     {% extends "common/footer.html" %}
-
-	<!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="/static/js/bootstrap.min.js"></script>
 	</body>
 </html>

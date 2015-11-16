@@ -8,13 +8,13 @@ from lakers.common import utils
 
 from flask import logging
 
-from lakers.config.mongo_conf import test
-
-from lakers.config.redis_conf import redis_server
-
 logger = logging.getLogger("user")
 
 class UserCoreService(object):
+    def get_by_id(self, id):
+        user = User.query.filter_by(id=id).first()
+        return user
+
     def get_by_name(self, username):
         user = User.query.filter_by(username=username).first()
         return user

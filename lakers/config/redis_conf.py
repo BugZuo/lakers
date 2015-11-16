@@ -4,13 +4,13 @@ import redis
 
 from lakers import app
 
-host = app.config.get('REDIS_HOST', 'localhost')
-port = app.config.get('REDIS_PORT', 6379)
-db_number = app.config.get('REDIS_DB', 0)
-password = app.config.get('REDIS_PASSWORD', None)
-socket_timeout = app.config.get('REDIS_SOCKET_TIMEOUT', 2)
+host = app.config.get('SESSION_REDIS_HOST', 'localhost')
+port = app.config.get('SESSION_REDIS_PORT', 6379)
+db_number = app.config.get('SESSION_REDIS_DB', 0)
+password = app.config.get('SESSION_REDIS_PASSWORD', None)
+socket_timeout = app.config.get('SESSION_REDIS_SOCKET_TIMEOUT', 2)
 
-redis_server = redis.StrictRedis(
+session_server = redis.StrictRedis(
         host=host,
         port=port,
         db=db_number,

@@ -5,6 +5,7 @@ import pytz
 from datetime import datetime
 
 import hashlib
+import sys
 
 from lakers.app_settings import APP_TIMEZONE
 
@@ -24,6 +25,15 @@ def create_password(password):
     md5 = hashlib.md5()
     md5.update(password + "$" + SALT)
     return md5.hexdigest()
+
+def to_bytes(x, charset=sys.getdefaultencoding(), errors='strict'):
+    if x is None:
+        return None
+    if isinstance(x, (bytes, bytearray, buffer)):
+        return bytes(x)
+    if isinstance(x, unicode):
+        return x.encode(charset, errors)
+    raise TypeError('Expected bytes')
 
 if __name__=='__main__':
     print create_password('asd')

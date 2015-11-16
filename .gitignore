@@ -1,3 +1,6 @@
+lakers/develop.py
+lakers/product.py
+
 logs/*
 *.pid
 
