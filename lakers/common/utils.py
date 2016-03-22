@@ -1,19 +1,21 @@
 # coding=utf-8
 
-import pytz
+import sys
+import os
+
+cur_dir = os.path.abspath(__file__)
+sys.path.insert(0, '/'.join(cur_dir.split('/')[:-3]))
 
 from datetime import datetime
 
 import hashlib
-import sys
-
 from lakers.app_settings import APP_TIMEZONE
 
 __author__ = 'bug'
 
 STANDARD_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
-SALT = 'lakers'
+SALT = 'flyzfq'
 
 def standard_time_str(t):
     if t is None or not isinstance(t, datetime):
@@ -22,9 +24,9 @@ def standard_time_str(t):
 
 def create_password(password):
     password = str(password)
-    md5 = hashlib.md5()
-    md5.update(password + "$" + SALT)
-    return md5.hexdigest()
+    sha1 = hashlib.sha1()
+    sha1.update(SALT + password)
+    return "%s$%s" % (sha1.hexdigest(), SALT)
 
 def to_bytes(x, charset=sys.getdefaultencoding(), errors='strict'):
     if x is None:

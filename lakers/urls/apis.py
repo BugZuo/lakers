@@ -7,4 +7,5 @@ URLS = (
     ('/api/handsome/', ['GET'], handsome.HandSomeAPI),
     ('/register/', 'POST', home.RegisterAPI),
     ('/api/login/', 'POST', home.LoginAPI),
+    ('/api/logout/', 'GET', home.LoginAPI),
 )

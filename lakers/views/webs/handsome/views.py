@@ -10,3 +10,9 @@ class HandSomeView(MethodView):
     @need_login
     def get(self):
         return render_template("handsome/handsome.html")
+
+
+class PostHtmlView(MethodView):
+    @need_login
+    def get(self):
+        return render_template("post.html")

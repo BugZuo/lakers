@@ -21,7 +21,7 @@
           if (jsn.success === true) {
             window.location.replace('/');
           } else {
-            alert(jsn.message.password + ' -- ' + jsn.message.username)
+            alert(jsn.message)
           }
         }
       });

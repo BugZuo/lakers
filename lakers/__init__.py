@@ -40,6 +40,10 @@ middleware = MiddleWare(app)
 def not_found(error):
     return render_template("404.html")
 
+@app.errorhandler(500)
+def error_page(error):
+    return render_template("500.html")
+
 @app.context_processor
 def template_processor():
     static_prefix =  app.config.get('STATIC_PREFIX', '')

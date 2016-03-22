@@ -1,6 +1,4 @@
 
-import os
-
 PUBLIC_HOST = '115.28.235.26'
 
 TEMPLATE_FOLDER = 'templates'

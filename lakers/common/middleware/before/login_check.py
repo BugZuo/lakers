@@ -1,10 +1,11 @@
 from lakers import app
 from flask import g, request, redirect
-from lakers.common import api
+import functools
 
 __author__ = 'bug'
 
 def need_login(func):
+    @functools.wraps(func)
     def wrapper(*args, **kw):
         session = g.session
         session_data = session.get_session()

@@ -1,10 +1,13 @@
 # coding=utf-8
 
 from flask import g, request, redirect
+import re
 from lakers import app
 from lakers.services.user import user_core_service
 
 __author__ = 'bug'
+
+SPIDER_RE = re.compile(r".*Baiduspider|Googlebot|Sogou web spider.*")
 
 class UserMiddleWare(object):
     @staticmethod
@@ -22,3 +25,18 @@ class UserMiddleWare(object):
             request.user = user
 
 
+class RedirectMiddleWare(object):
+    """
+    根据user_agent判定爬虫请求，过滤
+    """
+    @staticmethod
+    def main():
+        need_redirect_path = (
+            r'lakers.views.webs.handsome.views.HandSomeView.get./handsome/',
+        )
+        view_path = request.endpoint
+        user_agent = request.user_agent.string
+        is_matched = re.match(SPIDER_RE, user_agent)
+        print(is_matched.string)
+        if view_path in need_redirect_path and not is_matched:
+            return redirect('/post/')

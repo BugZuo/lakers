@@ -13,6 +13,7 @@ def save_session(user_id, user_name):
     cookie_name = app.config.get('SESSION_COOKIE_NAME')
     uid_key = app.config.get('SESSION_USER_ID_KEY')
     session = g.session
+    session.cycle_key()
     session.set_session({
         uid_key: user_id,
         'user_name': user_name,
@@ -28,6 +29,6 @@ def store_cookie(response, user_id, user_name=None):
     :return:
     """
     response.set_cookie(app.config.get('SESSION_USER_ID_KEY'), value=bytes(user_id), max_age=SESSION_COOKIE_AGE)
-    response.set_cookie(app.config.get('SESSION_COOKIE_NAME'), value=bytes(g.session.get_id()), max_age=SESSION_COOKIE_AGE)
+    # response.set_cookie(app.config.get('SESSION_COOKIE_NAME'), value=bytes(g.session.get_id()), max_age=SESSION_COOKIE_AGE)
     return response
 

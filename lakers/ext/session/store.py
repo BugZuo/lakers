@@ -44,7 +44,7 @@ class SessionStore(SessionBase):
         while True:
             self.session_key = self._get_new_session_key()
             try:
-                self.save( must_create=True)
+                self.save(must_create=True)
             except CreateError:
                 continue
             self.modified = True
@@ -56,6 +56,7 @@ class SessionStore(SessionBase):
         data = self.encode(self.get_session(no_load=must_create))
         if is_login:
             expires = settings.SESSION_COOKIE_AGE_LOGIN_USER
+            self.set_expiry(expires)
         else:
             expires = self.get_expiry_age()
         self.server.set(self.session_key, data)

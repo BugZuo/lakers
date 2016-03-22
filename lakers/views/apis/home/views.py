@@ -11,6 +11,8 @@ from lakers.ext.session.manage import store_cookie, save_session
 
 from lakers.services.user import user_core_service
 
+from lakers import app_settings as settings
+
 
 class RegisterAPI(MethodView):
     def post(self):
@@ -58,4 +60,11 @@ class LoginAPI(MethodView):
         response = make_response(api.jsn(api.success, data=data))
         save_session(user['id'], user['username'])
         return store_cookie(response, user['id'])
+
+    def get(self):
+        request.session.set_expiry(0)
+        request.session.flush()
+        response = make_response(api.jsn(api.success))
+        response.set_cookie(settings.SESSION_USER_ID_KEY, max_age=-1)
+        return response
 
